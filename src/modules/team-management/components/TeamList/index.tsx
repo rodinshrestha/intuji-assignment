@@ -2,45 +2,42 @@ import React from 'react';
 
 import Card from '@/modules/core/components/Card';
 
-import EditPlayerModal from '../EditPlayerModal';
-import RemovePlayerModal from '../RemovePlayerModal';
+import EditTeamModal from '../EditTeamModal';
+import RemoveTeamModal from '../RemoveTeamModal';
 
 import { StyledDiv } from './style';
 type Props = {
-  name: string;
-  rating: string;
+  teamName: string;
   id: string;
 };
 
-const PlayerList = ({ name, rating, id }: Props) => {
+const TeamList = ({ teamName, id }: Props) => {
   const [isEditModalOpen, setIsEditModalOpen] = React.useState(false);
   const [isRemoveModalOpen, setIsRemoveModalOpen] = React.useState(false);
 
   return (
     <StyledDiv>
       <Card
-        name={name}
-        rating={rating}
+        name={teamName}
         onEditClick={() => setIsEditModalOpen(true)}
         onRemoveClick={() => setIsRemoveModalOpen(true)}
       />
 
-      <EditPlayerModal
+      <EditTeamModal
         isOpen={isEditModalOpen}
         onClose={() => setIsEditModalOpen(false)}
-        name={name}
-        rating={rating}
+        teamName={teamName}
         id={id}
       />
 
-      <RemovePlayerModal
+      <RemoveTeamModal
         isOpen={isRemoveModalOpen}
         onClose={() => setIsRemoveModalOpen(false)}
-        fullName={name}
+        teamName={teamName}
         id={id}
       />
     </StyledDiv>
   );
 };
 
-export default PlayerList;
+export default TeamList;

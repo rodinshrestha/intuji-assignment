@@ -4,26 +4,25 @@ import Typography from '@/modules/core/components/Typography';
 import Button from '@/modules/core/components/Button';
 import Modal from '@/modules/core/components/Modal';
 
-import { removePlayer } from '../../actions/player-actions';
+import { removeTeam } from '../../actions/team-server-action';
 
 import { StyledDiv } from './style';
+
 type Props = {
-  fullName: string;
-  id: string;
+  teamName: string;
   onClose: () => void;
   isOpen: boolean;
+  id: string;
 };
 
-const RemovePlayerModal = ({ fullName, id, onClose, isOpen }: Props) => {
+const RemoveTeamModal = ({ teamName, onClose, isOpen, id }: Props) => {
   const [loader, setLoader] = React.useState(false);
 
-  const onDelete = () => {
+  const handleOnSuccess = () => {
     setLoader(true);
 
-    removePlayer(id)
-      .then(() => {
-        onClose();
-      })
+    removeTeam(id)
+      .then(() => onClose())
       .finally(() => {
         setLoader(false);
       });
@@ -32,14 +31,14 @@ const RemovePlayerModal = ({ fullName, id, onClose, isOpen }: Props) => {
   return (
     <Modal open={isOpen} onClose={onClose} title="Delete Confirmation">
       <StyledDiv>
-        <Typography variant="p">{`Are you sure you want to remove "${fullName}" Player?`}</Typography>
+        <Typography variant="p">{`Are you sure you want to remove "${teamName}"?`}</Typography>
 
         <div className="btn-group">
           <Button
             variant="contained"
-            onClick={onDelete}
-            isLoading={loader}
+            onClick={handleOnSuccess}
             disabled={loader}
+            isLoading={loader}
           >
             Procced
           </Button>
@@ -52,4 +51,4 @@ const RemovePlayerModal = ({ fullName, id, onClose, isOpen }: Props) => {
   );
 };
 
-export default RemovePlayerModal;
+export default RemoveTeamModal;

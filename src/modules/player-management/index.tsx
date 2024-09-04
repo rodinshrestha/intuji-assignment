@@ -7,23 +7,13 @@ import SectionTitle from '../core/components/SectionTitle';
 import AddPlayerModal from './components/AddPlayerModal';
 import PlayerList from './components/PlayerList';
 import { StyledDiv } from './style';
+import { PlayerManagementTypes } from './player-management-types';
 
-const bulkData = [
-  {
-    name: 'Rodin 1',
-    rating: 3,
-  },
-  {
-    name: 'Rodin 2',
-    rating: 2,
-  },
-  {
-    name: 'Rodin Shrestha',
-    rating: 5,
-  },
-];
+type Props = {
+  data: Array<PlayerManagementTypes>;
+};
 
-const PlayerManagement = () => {
+const PlayerManagement = ({ data }: Props) => {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   return (
     <StyledDiv>
@@ -33,8 +23,15 @@ const PlayerManagement = () => {
         onClick={() => setIsModalOpen(true)}
       />
       <div className="player-list-wrapper">
-        {bulkData.map((x, i) => {
-          return <PlayerList key={i} {...x} />;
+        {data.map((x, i) => {
+          return (
+            <PlayerList
+              key={i}
+              name={x.player_name}
+              rating={x.rating}
+              id={x._id}
+            />
+          );
         })}
       </div>
 

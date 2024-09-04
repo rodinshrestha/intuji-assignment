@@ -11,6 +11,7 @@ import Button from '@/modules/core/components/Button';
 import Typography from '@/modules/core/components/Typography';
 
 import { addPlayerSchema, AddPlayerSchemaType } from '../../add-player-schema';
+import { updatePlayer } from '../../actions/player-actions';
 
 import { StyledDiv } from './style';
 
@@ -18,20 +19,30 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
   name: string;
-  rating: number;
+  rating: string;
+  id: string;
 };
 
-const EditPlayerModal = ({ isOpen, onClose, name, rating }: Props) => {
+const EditPlayerModal = ({ isOpen, onClose, name, rating, id }: Props) => {
+  const [loader, setLoader] = React.useState(false);
+
   const formik = useFormik<AddPlayerSchemaType>({
     initialValues: {
-      fullname: name,
-      rating: rating.toString(),
+      playerName: name,
+      rating: rating,
     },
     enableReinitialize: true,
     validationSchema: addPlayerSchema,
     validateOnMount: true,
     onSubmit: (values) => {
-      alert(JSON.stringify(values));
+      setLoader(true);
+      updatePlayer(id, values)
+        .then(() => {
+          onClose();
+        })
+        .finally(() => {
+          setLoader(false);
+        });
     },
   });
 
@@ -40,13 +51,13 @@ const EditPlayerModal = ({ isOpen, onClose, name, rating }: Props) => {
       <StyledDiv>
         <div className="input-wrapper">
           <InputField
-            label="Full Name"
-            name="fullname"
-            value={formik.values.fullname}
+            label="Player Name"
+            name="playerName"
+            value={formik.values.playerName}
             onChange={formik.handleChange}
-            error={!!formik.errors.fullname}
-            errorMsg={formik.errors?.fullname}
-            touched={formik.touched.fullname}
+            error={!!formik.errors.playerName}
+            errorMsg={formik.errors?.playerName}
+            touched={formik.touched.playerName}
           />
 
           <div className="rating-field-wrapper">
@@ -78,13 +89,18 @@ const EditPlayerModal = ({ isOpen, onClose, name, rating }: Props) => {
               variant="contained"
               size="lg"
               type="submit"
-              disabled={!formik.dirty}
-              isLoading
+              disabled={!formik.dirty || loader}
+              isLoading={loader}
               onClick={formik.submitForm}
             >
               Update
             </Button>
-            <Button variant="outline" size="lg" onClick={onClose}>
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={onClose}
+              disabled={loader}
+            >
               Cancel
             </Button>
           </div>

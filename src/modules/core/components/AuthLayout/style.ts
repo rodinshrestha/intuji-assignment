@@ -30,7 +30,7 @@ export const StyledMain = styled.main`
     }
 
     .content-wrapper {
-      width: 100%;
+      width: calc(100vw - 300px);
       .top-header-wrapper {
         padding: 20px;
         background-color: ${theme.coreColor.primaryBgColor};

@@ -44,7 +44,7 @@ const Button = ({
   onClick,
   disabled = false,
   isLoading = false,
-  type = 'submit',
+  type = 'button',
   style,
 }: ButtonProps &
   (JSX.IntrinsicElements['button'] & JSX.IntrinsicElements['a'])) => {

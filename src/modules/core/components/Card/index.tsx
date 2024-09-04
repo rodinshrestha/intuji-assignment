@@ -11,9 +11,9 @@ import { StyledDiv } from './style';
 
 type Props = {
   name: string;
-  rating: number;
   onEditClick?: () => void;
   onRemoveClick?: () => void;
+  rating?: string;
 };
 
 const Card = ({ name, rating, onEditClick, onRemoveClick }: Props) => {
@@ -24,7 +24,9 @@ const Card = ({ name, rating, onEditClick, onRemoveClick }: Props) => {
       </div>
       <div className="player-information-container">
         <Typography variant="p">{name}</Typography>
-        <Rating initialValue={rating} readonly size={30} />
+        {rating && (
+          <Rating initialValue={Number(rating) || 0} readonly size={30} />
+        )}
       </div>
       <div className="action-btn-group">
         <Button variant="transparent" onClick={onEditClick}>

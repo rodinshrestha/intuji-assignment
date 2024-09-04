@@ -21,7 +21,8 @@
       "@/*": ["./src/*"],
       "@/theme/*": ["./src/theme/*"],
       "@/core/*": ["./src/modules/core/*"],
-      "@/player-management": ["./src/modules/player-management"]
+      "@/player-management": ["./src/modules/player-management/*"],
+      "@/team-management": ["./src/modules/team-management/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
