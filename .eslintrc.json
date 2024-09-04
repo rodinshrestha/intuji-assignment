@@ -73,5 +73,5 @@
       }
     ]
   },
-  "ignorePatterns": ["next.config.js", "*.d.ts", "commitlint.config.js"]
+  "ignorePatterns": ["next.config.mjs", "*.d.ts", "commitlint.config.js"]
 }

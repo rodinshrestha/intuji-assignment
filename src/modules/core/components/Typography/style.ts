@@ -18,6 +18,9 @@ const baseStyles = () => css`
   &.center {
     text-align: center;
   }
+  &.error {
+    color: red;
+  }
 `;
 
 export const H1 = styled.h1`
@@ -63,5 +66,5 @@ export const P = styled.p`
 
 export const Span = styled.span`
   ${baseStyles}
-  font-size: 1rem;
+  font-size: 14px;
 `;

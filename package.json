@@ -16,11 +16,16 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
+    "formik": "^2.4.6",
     "next": "14.2.7",
     "polished": "^4.3.1",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.13"
+    "react-loader-spinner": "^6.1.6",
+    "react-simple-star-rating": "^5.1.7",
+    "react-user-avatar": "^1.10.0",
+    "styled-components": "^6.1.13",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.4.1",

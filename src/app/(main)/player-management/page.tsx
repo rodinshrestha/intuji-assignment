@@ -1,7 +1,9 @@
 import React from 'react';
 
-const PlayerManagement = () => {
-  return <div>PlayerManagement</div>;
+import PlayerManagement from '@/player-management';
+
+const PlayerManagementPage = () => {
+  return <PlayerManagement />;
 };
 
-export default PlayerManagement;
+export default PlayerManagementPage;

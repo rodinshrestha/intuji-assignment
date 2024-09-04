@@ -28,5 +28,38 @@ export const StyledMain = styled.main`
         background-color: ${theme.coreColor.activeBgColor};
       }
     }
+
+    .content-wrapper {
+      width: 100%;
+      .top-header-wrapper {
+        padding: 20px;
+        background-color: ${theme.coreColor.primaryBgColor};
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-left: 30px;
+
+        .user-group {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 20px;
+          text-align: right;
+
+          .user-title {
+            display: flex;
+            flex-direction: column;
+            color: rgb(28 36 52 / 1);
+
+            .user-designation {
+              color: #64748b;
+              font-size: 12px !important;
+            }
+          }
+        }
+      }
+    }
   `}
 `;
