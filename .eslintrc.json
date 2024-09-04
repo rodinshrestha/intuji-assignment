@@ -4,18 +4,21 @@
     "node": true,
     "es2021": true
   },
-  "extends": [
-    "next",
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:import/typescript",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended"
-  ],
   "globals": {
     "React": "readonly"
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/typescript",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "next/core-web-vitals",
+    "prettier"
+  ],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "import"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -25,7 +28,6 @@
     "sourceType": "module",
     "project": ["./tsconfig.json"]
   },
-  "plugins": ["react", "@typescript-eslint", "import"],
   "settings": {
     "react": {
       "version": "detect"
@@ -39,6 +41,9 @@
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/no-explicit-any": "warn",
     "no-console": "off",
+    "no-array-constructor": "error",
+    // change to error for better experience
+    "@typescript-eslint/no-unsafe-return": "off",
     "@typescript-eslint/no-unused-vars": [
       "error",
       {
@@ -68,6 +73,5 @@
       }
     ]
   },
-  "ignorePatterns": ["next.config.mjs", "*.d.ts", "commitlint.config.js"]
- 
+  "ignorePatterns": ["next.config.js", "*.d.ts", "commitlint.config.js"]
 }

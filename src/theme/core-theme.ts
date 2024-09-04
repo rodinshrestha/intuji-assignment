@@ -1,0 +1,16 @@
+type CoreThemeType = {
+  bodyBgColor: string;
+  sidebarBgColor: string;
+  primaryTextColor: string;
+  activeBgColor: string;
+};
+
+export const lightTheme: CoreThemeType = {
+  bodyBgColor: 'rgb(241 245 249 / 1)',
+  sidebarBgColor: 'rgb(28 36 52 / 1)',
+  primaryTextColor: 'rgb(222 228 238 / 1)',
+  activeBgColor: 'rgb(51 58 72 / 1)',
+};
+
+//
+export const darkTheme = {};
