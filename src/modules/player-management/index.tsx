@@ -3,6 +3,7 @@
 import React from 'react';
 
 import SectionTitle from '../core/components/SectionTitle';
+import Typography from '../core/components/Typography';
 
 import AddPlayerModal from './components/AddPlayerModal';
 import PlayerList from './components/PlayerList';
@@ -34,6 +35,10 @@ const PlayerManagement = ({ data }: Props) => {
           );
         })}
       </div>
+
+      {!data.length && (
+        <Typography variant="p">Player List is empty.</Typography>
+      )}
 
       <AddPlayerModal
         isOpen={isModalOpen}

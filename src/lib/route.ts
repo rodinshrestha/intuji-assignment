@@ -11,12 +11,7 @@ export const route = [
   },
   {
     id: 3,
-    title: 'Team Generation',
-    slug: 'team-generation',
-  },
-  {
-    id: 4,
-    title: 'Notice',
-    slug: 'notice',
+    title: 'Team Generator',
+    slug: 'team-generator',
   },
 ];

@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
+
+import Login from '@/modules/login';
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+  return <Login />;
+};
 
-export default HomePage
+export default HomePage;

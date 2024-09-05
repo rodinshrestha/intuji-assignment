@@ -28,5 +28,22 @@ export const StyledDiv = styled.div`
       justify-content: space-between;
       align-items: center;
     }
+
+    .player-list-text {
+      border-top: ${theme.coreColor.borderColor};
+      border-bottom: ${theme.coreColor.borderColor};
+      padding: 15px;
+      font-weight: bold !important;
+    }
+    .player-with-team-list-wrapper {
+      li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        column-gap: 50px;
+        padding: 10px;
+        border-top: ${theme.coreColor.borderColor};
+      }
+    }
   `}
 `;

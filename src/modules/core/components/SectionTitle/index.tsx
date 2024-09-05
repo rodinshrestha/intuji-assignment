@@ -9,15 +9,21 @@ type Props = {
   title: string;
   buttonLabel?: string;
   onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  loader?: boolean;
 };
 
-const SectionTitle = ({ title, buttonLabel, onClick }: Props) => {
+const SectionTitle = ({ title, buttonLabel, onClick, loader }: Props) => {
   return (
     <StyledDiv className="section-title-wrapper">
       <Typography variant="h6">{title}</Typography>
 
       {buttonLabel && (
-        <Button variant="contained" onClick={onClick}>
+        <Button
+          variant="contained"
+          onClick={onClick}
+          isLoading={loader}
+          disabled={loader}
+        >
           {buttonLabel}
         </Button>
       )}
