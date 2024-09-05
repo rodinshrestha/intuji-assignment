@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import Shared from '@/modules/Shared';
 import { fetchSharedTeam } from '@/modules/team-generator/actions/team-generator-action';
@@ -13,7 +13,11 @@ const SharedPage = async ({ params }: PageType) => {
   const { id = '' } = params || {};
   const data = await fetchSharedTeam(id);
 
-  return <Shared data={data?.data || null} />;
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <Shared data={data?.data || null} />
+    </Suspense>
+  );
 };
 
 export default SharedPage;

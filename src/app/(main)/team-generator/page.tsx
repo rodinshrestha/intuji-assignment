@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { fetchPlayer } from '@/modules/player-management/actions/player-actions';
 import { fetchTeam } from '@/modules/team-management/actions/team-server-action';
@@ -11,7 +11,11 @@ const TeamGeneration = async () => {
     (res) => res
   );
 
-  return <TeamGenerator team={team?.data || []} player={player?.data || []} />;
+  return (
+    <Suspense fallback={<p>Loading...</p>}>
+      <TeamGenerator team={team?.data || []} player={player?.data || []} />
+    </Suspense>
+  );
 };
 
 export default TeamGeneration;
