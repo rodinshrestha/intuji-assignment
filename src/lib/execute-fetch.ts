@@ -1,4 +1,5 @@
-export const baseAPI = process.env.NEXT_PUBLIC_API_URL;
+export const baseAPI =
+  process.env.NEXT_PUBLIC_API_URL || 'https://its-my-api.onrender.com';
 
 export const executeFetch = async (
   url: `/${string}`,
