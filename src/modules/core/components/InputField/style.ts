@@ -27,6 +27,11 @@ export const StyledDiv = styled.div`
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 10px;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   `}
 `;

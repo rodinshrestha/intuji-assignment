@@ -68,7 +68,7 @@ const InputField = (props: IProps) => {
               onClick={() => setShowPassword((prev) => !prev)}
               aria-hidden="true"
             >
-              <i className={showPassword ? 'icon-hide' : 'icon-show'} />
+              {showPassword ? 'hide' : 'show'}
             </div>
           )}
         </div>
