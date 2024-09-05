@@ -2,9 +2,17 @@
   "recommendations": [
     // ESLint/Prettier formatter
     "esbenp.prettier-vscode",
+
+    // Import Cost
+    "wix.vscode-import-cost",
+
+    // Styled component
+    "styled-components.vscode-styled-components",
+
     // ESLint support to VSCode
     "dbaeumer.vscode-eslint",
-    // Tailwind CSS autocomplete and more
-    "bradlc.vscode-tailwindcss"
+
+    // React snippet
+    "dsznajder.es7-react-js-snippets"
   ]
 }

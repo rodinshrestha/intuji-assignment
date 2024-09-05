@@ -16,8 +16,7 @@ type Props = {
 const ShareModal = ({ isOpen, onClose, hasKey }: Props) => {
   const [isCopied, setIsCopied] = React.useState(false);
   const siteName =
-    process.env.NEXT_PUBLIC_HOST_SITE ||
-    'https://intuji-assignment-git-main-rodinshresthas-projects.vercel.app/';
+    process.env.NEXT_PUBLIC_HOST_SITE || 'https://intuji-assignment.vercel.app';
 
   const sharedURL = `${siteName}/shared/${hasKey}`;
 
