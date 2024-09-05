@@ -1,11 +1,13 @@
 import React, { Suspense } from 'react';
 
+import { cookies } from 'next/headers';
+
 import TeamManagement from '@/modules/team-management';
 import { fetchTeam } from '@/modules/team-management/actions/team-server-action';
 
-export const dynamic = 'force-dynamic';
-
 const TeamManagementPage = async () => {
+  console.log(cookies);
+
   const data = await fetchTeam();
 
   return (

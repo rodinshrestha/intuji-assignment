@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import AuthLayout from '@/modules/core/components/AuthLayout';
 
@@ -7,7 +7,11 @@ type Props = {
 };
 
 const MainLayout = ({ children }: Props) => {
-  return <AuthLayout>{children}</AuthLayout>;
+  return (
+    <AuthLayout>
+      <Suspense fallback={<p>Loading..</p>}>{children}</Suspense>
+    </AuthLayout>
+  );
 };
 
 export default MainLayout;
