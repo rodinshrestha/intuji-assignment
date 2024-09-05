@@ -24,6 +24,7 @@
     "react-dom": "^18",
     "react-loader-spinner": "^6.1.6",
     "react-simple-star-rating": "^5.1.7",
+    "react-toastify": "^10.0.5",
     "react-user-avatar": "^1.10.0",
     "styled-components": "^6.1.13",
     "yup": "^1.4.0"

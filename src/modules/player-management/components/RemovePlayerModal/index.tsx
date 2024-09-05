@@ -2,6 +2,7 @@ import React from 'react';
 
 import Typography from '@/modules/core/components/Typography';
 import Button from '@/modules/core/components/Button';
+import toastAlert from '@/modules/core/utils/toast';
 import Modal from '@/modules/core/components/Modal';
 
 import { removePlayer } from '../../actions/player-actions';
@@ -23,6 +24,10 @@ const RemovePlayerModal = ({ fullName, id, onClose, isOpen }: Props) => {
     removePlayer(id)
       .then(() => {
         onClose();
+        toastAlert('Player Removed', 'success');
+      })
+      .catch(() => {
+        toastAlert('Error', 'error');
       })
       .finally(() => {
         setLoader(false);

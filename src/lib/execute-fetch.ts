@@ -14,8 +14,10 @@ export const executeFetch = async (
     },
   });
 
-  if ([401].includes(response.status)) {
+  if ([401, 403].includes(response.status)) {
     // Remove auth token
+    // cookie.delete(AUTH_TOKEN);
+    // redirect('/login');
   }
   return response;
 };

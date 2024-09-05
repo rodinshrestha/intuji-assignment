@@ -9,6 +9,7 @@ import Modal from '@/modules/core/components/Modal';
 import InputField from '@/modules/core/components/InputField';
 import Button from '@/modules/core/components/Button';
 import Typography from '@/modules/core/components/Typography';
+import toastAlert from '@/modules/core/utils/toast';
 
 import { addPlayerSchema, AddPlayerSchemaType } from '../../add-player-schema';
 import { updatePlayer } from '../../actions/player-actions';
@@ -39,6 +40,10 @@ const EditPlayerModal = ({ isOpen, onClose, name, rating, id }: Props) => {
       updatePlayer(id, values)
         .then(() => {
           onClose();
+          toastAlert('Player Updated', 'success');
+        })
+        .catch(() => {
+          toastAlert('Error', 'error');
         })
         .finally(() => {
           setLoader(false);

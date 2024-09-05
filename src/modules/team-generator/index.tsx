@@ -10,6 +10,7 @@ import Card from '../core/components/Card';
 import SectionTitle from '../core/components/SectionTitle';
 import { TeamWithPlayerType } from '../core/types/types';
 import { generateUniqueHashKey } from '../core/utils/generate-hash-key';
+import toastAlert from '../core/utils/toast';
 
 import { StyledDiv } from './style';
 import { generateTeam } from './utils/generate-team';
@@ -44,6 +45,9 @@ const TeamGenerator = ({ team, player }: Props) => {
     })
       .then(() => {
         setIsShareModalOpen(true);
+      })
+      .catch(() => {
+        toastAlert('Error', 'error');
       })
       .finally(() => {
         setLoader(false);

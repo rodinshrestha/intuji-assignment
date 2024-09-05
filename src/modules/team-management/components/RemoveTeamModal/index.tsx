@@ -3,6 +3,7 @@ import React from 'react';
 import Typography from '@/modules/core/components/Typography';
 import Button from '@/modules/core/components/Button';
 import Modal from '@/modules/core/components/Modal';
+import toastAlert from '@/modules/core/utils/toast';
 
 import { removeTeam } from '../../actions/team-server-action';
 
@@ -22,7 +23,13 @@ const RemoveTeamModal = ({ teamName, onClose, isOpen, id }: Props) => {
     setLoader(true);
 
     removeTeam(id)
-      .then(() => onClose())
+      .then(() => {
+        toastAlert('Team removed.', 'success');
+        onClose();
+      })
+      .catch(() => {
+        toastAlert('Error', 'error');
+      })
       .finally(() => {
         setLoader(false);
       });

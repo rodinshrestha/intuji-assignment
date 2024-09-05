@@ -2,7 +2,7 @@ export const route = [
   {
     id: 1,
     title: 'Player Management',
-    slug: 'player-management',
+    slug: '/',
   },
   {
     id: 2,

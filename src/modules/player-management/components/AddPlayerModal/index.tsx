@@ -8,6 +8,7 @@ import Modal from '@/modules/core/components/Modal';
 import InputField from '@/modules/core/components/InputField';
 import Button from '@/modules/core/components/Button';
 import Typography from '@/modules/core/components/Typography';
+import toastAlert from '@/modules/core/utils/toast';
 
 import { addPlayerSchema, AddPlayerSchemaType } from '../../add-player-schema';
 import { createPlayer } from '../../actions/player-actions';
@@ -32,7 +33,13 @@ const AddPlayerModal = ({ isOpen, onClose }: Props) => {
     onSubmit: (values) => {
       setLoader(true);
       createPlayer(values)
-        .then(() => onClose())
+        .then(() => {
+          toastAlert('Player Created', 'success');
+          onClose();
+        })
+        .catch(() => {
+          toastAlert('Error', 'error');
+        })
         .finally(() => {
           setLoader(false);
         });

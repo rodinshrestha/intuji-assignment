@@ -27,7 +27,9 @@ const AuthLayout = ({ children }: Props) => {
     <StyledMain>
       <aside className="sidebar-wrapper">
         {route.map((x) => {
-          const isActive = segments.includes(x.slug);
+          const isActive = !segments.length
+            ? x.slug === '/'
+            : segments.includes(x.slug);
           return (
             <Link href={`/${x.slug}`} key={x.id}>
               <Typography

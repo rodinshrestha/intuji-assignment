@@ -1,7 +1,6 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { notFound } from 'next/navigation';
 
 import { executeFetch } from '@/lib/execute-fetch';
 
@@ -11,7 +10,7 @@ export const fetchTeam = async () => {
   const response = await executeFetch('/team/get-teams');
 
   if (!response.ok) {
-    return notFound();
+    return { data: [] };
   }
 
   return (await response.json()) as { data: Array<TeamManagementType> };

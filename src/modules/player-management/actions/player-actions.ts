@@ -1,7 +1,6 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { notFound } from 'next/navigation';
 
 import { executeFetch } from '@/lib/execute-fetch';
 
@@ -11,7 +10,7 @@ export const fetchPlayer = async () => {
   const response = await executeFetch('/player/get-players');
 
   if (!response.ok) {
-    return notFound();
+    return { data: [] };
   }
 
   return (await response.json()) as { data: Array<PlayerManagementTypes> };
@@ -27,7 +26,7 @@ export const createPlayer = async (
       body: JSON.stringify(body),
     });
 
-    revalidatePath('/player-management');
+    revalidatePath('/');
     return { message: 'success' };
   } catch (error) {
     console.log(error);
@@ -41,7 +40,7 @@ export const removePlayer = async (id: string) => {
       method: 'delete',
     });
 
-    revalidatePath('/player-management');
+    revalidatePath('/');
     return { message: 'success' };
   } catch (error) {
     console.log(error);
@@ -61,7 +60,7 @@ export const updatePlayer = async (
       body: JSON.stringify(body),
     });
 
-    revalidatePath('/player-management');
+    revalidatePath('/');
     return { message: 'success' };
   } catch (error) {
     console.log(error);

@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import Modal from '@/modules/core/components/Modal';
 import InputField from '@/modules/core/components/InputField';
 import Button from '@/modules/core/components/Button';
+import toastAlert from '@/modules/core/utils/toast';
 
 import { addTeamSchema, AddTeamSchemaType } from '../../add-team-schema';
 import { createTeam } from '../../actions/team-server-action';
@@ -29,7 +30,13 @@ const AddTeamModal = ({ isOpen, onClose }: Props) => {
     onSubmit: (values) => {
       setLoader(true);
       createTeam(values)
-        .then(() => onClose())
+        .then(() => {
+          toastAlert('Team created', 'success');
+          onClose();
+        })
+        .catch(() => {
+          toastAlert('Error', 'error');
+        })
         .finally(() => {
           setLoader(false);
         });

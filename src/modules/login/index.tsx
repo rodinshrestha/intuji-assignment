@@ -1,24 +1,37 @@
 'use client';
+
 import React from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import Typography from '../core/components/Typography';
 import InputField from '../core/components/InputField';
 import Button from '../core/components/Button';
+import toastAlert from '../core/utils/toast';
 
-import { StyledDiv } from './style';
 import { loginUser } from './actions/login-action';
+import { StyledDiv } from './style';
 
 const Login = () => {
   const [loader, setLoader] = React.useState(false);
   const [credentials, setCredentials] = React.useState({
-    email: '',
-    password: '',
+    email: 'admin@exmaple.com',
+    password: 'admin123',
   });
+
+  const router = useRouter();
 
   const handleOnSubmit = () => {
     setLoader(true);
     const { email = '', password = '' } = credentials || {};
-    loginUser(email, password).finally(() => setLoader(false));
+    loginUser(email, password)
+      .then(() => {
+        router.push('/');
+      })
+      .catch(() => {
+        toastAlert('Error', 'error');
+      })
+      .finally(() => setLoader(false));
   };
 
   return (

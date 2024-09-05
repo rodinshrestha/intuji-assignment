@@ -1,3 +1,4 @@
+'use server';
 import { executeFetch } from '@/lib/execute-fetch';
 import {
   SharedTypeProps,
