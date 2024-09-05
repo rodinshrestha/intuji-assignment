@@ -36,7 +36,7 @@ const Login = () => {
 
   return (
     <StyledDiv>
-      <div className="login-wrapper">
+      <form className="login-wrapper" onSubmit={handleOnSubmit}>
         <Typography variant="h1">Log In</Typography>
 
         <div className="form-field-wrapper">
@@ -62,13 +62,13 @@ const Login = () => {
         <Button
           variant="contained"
           size="lg"
-          onClick={handleOnSubmit}
           disabled={loader}
           isLoading={loader}
+          type="submit"
         >
           Login
         </Button>
-      </div>
+      </form>
     </StyledDiv>
   );
 };
